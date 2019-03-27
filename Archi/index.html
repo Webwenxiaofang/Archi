@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Keywords" content="立顶建筑,刘煜刚,刘宏,李双燕,上海立顶建筑咨询有限公司,建筑师事务所,建筑师,建筑设计,规划设计,室内设计,城市设计,architects,architectural design,urban planning,interior design,urban planning">
+	<title>THE Architects THE 建筑师事务所</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/animate.css">
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+	<div class="box">
+		<div class="animated fadeIn logo">
+			<img src="./images/home_logo.png">
+			<div class="animated fadeIn1 title">
+				<div onclick="showMain('English')">ENGLISH </div>
+				<div onclick="showMain('Chiniese')">中文</div>
+			</div>
+		</div>
+		<div class="animated fadeIn mainTest">
+			<div>
+				<img src="./images/T.png" class="img1"/>
+				<img src="./images/H.png" class="img2"/>
+				<img src="./images/E.png" class="img3"/>
+			</div>
+		</div>
+		<div class="animated fadeIn home">
+			<img src="./images/img_logo.png">
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/config.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+	<script type="text/javascript" src="./js/data.js"></script>
+	<script type="text/javascript" src="./js/jquery.js"></script>
+</body>
+<script type="text/javascript">
+	function C(e){
+		return document.getElementsByClassName(e);
+	}
+	let logo = C('logo')[0],
+		home = C('home')[0],
+		mainTest = C('mainTest')[0]
+		home1 = C('home1')[0],
+		clientWidth = document.getElementsByTagName('body')[0].offsetWidth,
+		clientHeight = document.getElementsByTagName('body')[0].offsetHeight;
+	function showMain(type){
+		logo.classList.add('animated','fadeOut','logo1')
+		mainTest.classList.remove('mainTest')
+		mainTest.classList.add('animated','fadeIn','mainTest1')
+		mainTest.classList.add('animated','fadeOut')
+		//home.classList.remove('home')
+		home.classList.add('animated','fadeIn','home1')
+		// home.classList.remove('home1')
+		let tmpLeft = clientWidth/2-54
+		home.style.left = tmpLeft +'px';
+		home.style.margin = 'auto 0';
+		leftTHE(tmpLeft,2);
+		if(type === 'English'){
+
+		}
+		if(type === 'Chiniese'){
+
+		}
+	}
+	function leftTHE(long,time){
+		let timerOut = setTimeout(()=>{
+			let tmpTime = time*100
+			let tmp = parseInt(long/tmpTime)
+			let timer = setInterval(()=>{
+				long = parseInt(long - tmp)
+				//console.log(long)
+				if(long<0){
+					long = 0
+					clearInterval(timer);
+					let tmpTop = clientHeight/2-25.5
+					home.style.top = tmpTop +'px';
+					home.style.margin = '0';
+					TopTHE(tmpTop,2);
+				}
+				home.style.left = long +'px';
+			},time)
+		},2000)
+	}
+
+	function TopTHE(long,time){
+		//  return
+		let timerOut = setTimeout(()=>{
+			let tmpTime = time*100
+			let tmp = parseInt(long/tmpTime)
+			let timer = setInterval(()=>{
+				long = parseInt(long - tmp)
+				//console.log(long)
+				if(long<100){
+					long = 100
+					clearInterval(timer);
+				}
+				home.style.top = long +'px';
+			},time)
+		},2000)
+	}
+
+	// //api
+// let test_location = 'http://10.2.138.32';
+// //home的幻灯片数据接口
+// let IHomeSlideUrl = '/home/index.php/Public/get_slides'; 
+// //项目图片的"前一个"链接模版 
+// let IProjectSlidePrevUrlTmpl = '/home/index.php/Project/slide/id/{@prevId}/filter/{@filter}/val/{@val}';
+// //项目图片的"后一个"链接模版
+// let IProjectSlideNextUrlTmpl = '/home/index.php/Project/slide/id/{@nextId}/filter/{@filter}/val/{@val}'; 
+// //项目的description链接模版
+// let IProjectDescUrlTmpl = '/home/index.php/Project/projectdes/id/{@id}';
+// //项目的print链接模版
+// let IPrintUrlTmpl = '/home/index.php/Project/pdf/id/{@id}';
+
+// //中英文
+// let En = '/home/index.php/Public/_switch?lang=en';
+// let Cn = '/home/index.php/Public/_switch?lang=cn';
+
+// //首页
+// let Index = '/index.php';
+// debugger
+//let IHomeSlideUrl = GetData.DataByJq('/home/index.php/Public/get_slides');
+// console.log(IHomeSlideUrl);
+// console.log('http://10.2.138.32/home/index.php/Public/get_slides');
+$.getJSON("http://10.2.138.32/home/index.php/Public/get_slides?callback=IHomeSlideUrl", function(data){
+	console.log(data);
+});
+</script>
+</html>
+<!-- <script type="text/javascript">
+	var script = document.createElement("script");
+	script.src = "http://10.2.138.32/home/index.php/Public/get_slides?callback=handleResponse";
+	document.body.insertBefore(script, document.body.firstChild);
+</script>
+<script type="text/javascript">
+function handleResponse(response){
+	// 对response数据进行操作代码
+	console.log(response);
+}
+</script> -->
